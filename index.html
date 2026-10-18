@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#08080a">
+<meta name="description" content="30题心理测试，测测你的阴暗面思维与心理变态倾向指数，仅供娱乐。">
+<title>阴影刻度 · 心理变态潜质测试（30题）</title>
+<style>
+:root{
+  --bg:#08080a;
+  --bg2:#0e0e12;
+  --card:#121217;
+  --card2:#17171d;
+  --line:#24242c;
+  --line2:#2f2f39;
+  --txt:#d9d9de;
+  --txt2:#8b8b95;
+  --txt3:#5e5e68;
+  --red:#d01327;
+  --red2:#ff2d43;
+  --red-soft:rgba(208,19,39,.16);
+  --safe-b:env(safe-area-inset-bottom, 0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  font-size:15px;
+  line-height:1.7;
+  min-height:100vh;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(900px 500px at 50% -10%, rgba(208,19,39,.13), transparent 60%),
+    radial-gradient(700px 700px at 110% 110%, rgba(208,19,39,.07), transparent 60%),
+    linear-gradient(180deg,#08080a 0%,#0b0b0f 60%,#08080a 100%);
+  background-attachment:fixed;
+}
+#app{max-width:520px;margin:0 auto;padding:0 16px calc(28px + var(--safe-b)) 16px;}
+
+/* ============ 免责声明（常驻顶部，不可移除） ============ */
+.disclaimer{
+  position:sticky;top:0;z-index:50;
+  margin:0 -16px 14px -16px;
+  padding:10px 16px 9px 16px;
+  background:rgba(10,10,13,.94);
+  backdrop-filter:saturate(140%) blur(10px);
+  -webkit-backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 8px 24px -14px rgba(0,0,0,.9);
+}
+.disclaimer-inner{
+  border:1px solid rgba(208,19,39,.45);
+  background:linear-gradient(180deg, rgba(208,19,39,.13), rgba(208,19,39,.05));
+  border-radius:10px;
+  padding:8px 10px;
+  display:flex;gap:8px;align-items:flex-start;
+}
+.dc-mark{
+  flex:none;font-size:12px;font-weight:700;letter-spacing:1px;
+  color:#ff5a68;border:1px solid rgba(208,19,39,.5);border-radius:4px;
+  padding:1px 5px;margin-top:2px;background:rgba(208,19,39,.12);
+}
+.dc-txt{font-size:11.5px;line-height:1.55;color:#c9c6c8;}
+.dc-txt b{color:#ff6a76;font-weight:600;}
+
+/* ============ 通用 ============ */
+.card{
+  background:linear-gradient(180deg,var(--card2),var(--card));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px 18px;
+  box-shadow:0 18px 40px -30px rgba(0,0,0,1);
+}
+.fade{animation:fade .38s ease both;}
+@keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.eyebrow{font-size:11px;letter-spacing:3px;color:var(--red2);text-transform:uppercase;font-weight:600;}
+h1{font-size:26px;line-height:1.35;margin:10px 0 6px;letter-spacing:1px;font-weight:700;}
+h1 .hl{color:var(--red2);}
+.sub{color:var(--txt2);font-size:13px;margin:0;}
+.muted{color:var(--txt3);font-size:12px;}
+.hr{height:1px;background:var(--line);margin:18px 0;}
+
+/* ============ 首页 ============ */
+.hero{
+  position:relative;padding:26px 20px 22px;border-radius:16px;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(400px 200px at 20% 0%, rgba(208,19,39,.18), transparent 70%),
+    linear-gradient(180deg,#131318,#0d0d11);
+  overflow:hidden;
+}
+.hero:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+.hero h1{position:relative;z-index:1;}
+.hero .sub{position:relative;z-index:1;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;position:relative;z-index:1;}
+.chip{
+  font-size:11.5px;color:var(--txt2);border:1px solid var(--line2);
+  border-radius:999px;padding:4px 10px;background:rgba(255,255,255,.02);
+}
+.chip b{color:var(--txt);font-weight:600;}
+.rules{margin:0;padding-left:18px;color:var(--txt2);font-size:13px;}
+.rules li{margin:6px 0;}
+.rules b{color:var(--txt);font-weight:600;}
+
+.btn{
+  display:block;width:100%;border:none;cursor:pointer;
+  font-family:inherit;font-size:16px;font-weight:600;letter-spacing:2px;
+  color:#fff;padding:16px 18px;border-radius:12px;
+  background:linear-gradient(135deg,var(--red) 0%,#8e0a19 100%);
+  box-shadow:0 12px 26px -14px rgba(208,19,39,.9), inset 0 1px 0 rgba(255,255,255,.12);
+  transition:transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn:active{transform:translateY(1px) scale(.995);filter:brightness(1.08);}
+.btn.ghost{
+  background:transparent;border:1px solid var(--line2);color:var(--txt2);
+  box-shadow:none;font-weight:500;letter-spacing:1px;font-size:14px;padding:13px;
+}
+.btn.ghost:active{border-color:var(--red);color:var(--txt);}
+
+/* ============ 答题 ============ */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;}
+.qnum{font-size:12px;letter-spacing:2px;color:var(--txt2);}
+.qnum b{color:var(--red2);font-size:16px;font-weight:700;letter-spacing:0;}
+.track{height:3px;border-radius:3px;background:#1c1c22;overflow:hidden;margin-bottom:20px;}
+.fill{height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,#8e0a19,var(--red2));transition:width .35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(208,19,39,.7);}
+.qtag{font-size:11px;letter-spacing:2px;color:var(--txt3);margin-bottom:8px;}
+.qtext{font-size:17.5px;line-height:1.75;font-weight:600;margin:0 0 4px;letter-spacing:.3px;}
+.qhint{font-size:12.5px;color:var(--txt3);margin:8px 0 0;}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
+.opt{
+  position:relative;display:flex;gap:12px;align-items:flex-start;
+  text-align:left;width:100%;cursor:pointer;font-family:inherit;
+  border:1px solid var(--line);border-radius:12px;
+  background:linear-gradient(180deg,#15151a,#101015);
+  color:var(--txt);font-size:14.5px;line-height:1.6;
+  padding:14px 14px 14px 12px;
+  transition:border-color .18s ease, background .18s ease, transform .12s ease, box-shadow .2s ease;
+}
+.opt:active{transform:scale(.99);}
+.opt .key{
+  flex:none;width:24px;height:24px;border-radius:6px;
+  border:1px solid var(--line2);background:#0c0c10;
+  font-size:12px;font-weight:700;color:var(--txt2);
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.opt.sel{
+  border-color:var(--red);
+  background:linear-gradient(180deg, rgba(208,19,39,.20), rgba(208,19,39,.07));
+  box-shadow:0 0 0 1px rgba(208,19,39,.35), 0 10px 24px -18px rgba(208,19,39,1);
+  color:#fff;
+}
+.opt.sel .key{background:var(--red);border-color:var(--red2);color:#fff;}
+.opt.lock{pointer-events:none;}
+.footrow{display:flex;gap:10px;margin-top:18px;}
+.footrow .btn{flex:1;}
+.linkbtn{
+  flex:none;border:1px solid var(--line2);background:transparent;color:var(--txt2);
+  font-family:inherit;font-size:13px;border-radius:12px;padding:0 16px;cursor:pointer;
+}
+.linkbtn:disabled{opacity:.35;cursor:default;}
+
+/* ============ 结果 ============ */
+.score-wrap{text-align:center;padding:26px 18px 22px;position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);
+  background:radial-gradient(300px 160px at 50% 0%, rgba(208,19,39,.20), transparent 70%), linear-gradient(180deg,#141419,#0d0d11);}
+.score-label{font-size:11px;letter-spacing:4px;color:var(--txt3);}
+.score-num{font-size:66px;line-height:1;font-weight:800;letter-spacing:-2px;margin:8px 0 2px;
+  color:#fff;text-shadow:0 0 30px rgba(208,19,39,.55);}
+.score-num small{font-size:18px;font-weight:600;color:var(--txt3);letter-spacing:0;}
+.level{display:inline-block;margin-top:8px;padding:6px 14px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:2px;
+  border:1px solid rgba(208,19,39,.55);background:rgba(208,19,39,.14);color:#ff6a76;}
+.scale{margin-top:22px;}
+.scale-track{position:relative;height:8px;border-radius:8px;background:#1a1a20;overflow:visible;}
+.scale-seg{position:absolute;top:0;height:8px;}
+.scale-seg:nth-child(1){left:0;width:25%;background:#31313a;border-radius:8px 0 0 8px;}
+.scale-seg:nth-child(2){left:25%;width:25%;background:#5a2731;}
+.scale-seg:nth-child(3){left:50%;width:25%;background:#9c1424;}
+.scale-seg:nth-child(4){left:75%;width:25%;background:#e0142a;border-radius:0 8px 8px 0;}
+.marker{position:absolute;top:-6px;width:3px;height:20px;background:#fff;border-radius:3px;box-shadow:0 0 12px #fff;transition:left .8s cubic-bezier(.4,0,.2,1);}
+.scale-tips{display:flex;justify-content:space-between;font-size:10.5px;color:var(--txt3);margin-top:8px;}
+.ana h3{font-size:14px;letter-spacing:2px;color:var(--red2);margin:22px 0 8px;font-weight:600;}
+.ana p{font-size:14px;color:var(--txt);margin:0 0 10px;}
+.ana .quote{border-left:2px solid var(--red);padding:2px 0 2px 12px;color:var(--txt2);font-size:13px;}
+.dist{display:flex;gap:8px;margin-top:14px;}
+.dist div{flex:1;text-align:center;border:1px solid var(--line);border-radius:10px;padding:10px 4px;background:rgba(255,255,255,.015);}
+.dist b{display:block;font-size:20px;font-weight:700;color:#fff;}
+.dist span{font-size:10.5px;color:var(--txt3);letter-spacing:1px;}
+.warn{margin-top:18px;font-size:12px;color:var(--txt3);line-height:1.7;border-top:1px dashed var(--line);padding-top:14px;}
+@media (max-width:360px){
+  .score-num{font-size:56px;}
+  h1{font-size:22px;}
+  .qtext{font-size:16px;}
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div class="disclaimer">
+    <div class="disclaimer-inner">
+      <span class="dc-mark">声明</span>
+      <p class="dc-txt"><b>免责声明：</b>本测试为娱乐向心理趣味问卷，题目改编自播客节目《TSP怪奇档案》「背后发凉！杀人狂潜质测试题」，<b>不具备任何医学、心理学诊断效力</b>，不能作为判断一个人是否会犯罪或是否为精神变态者的依据。请勿据结果给自己或他人贴标签；如你因结果感到持续困扰，请寻求专业心理咨询师帮助。</p>
+    </div>
+  </div>
+
+  <main id="stage"></main>
+</div>
+
+<script>
+/* =========================================================
+   30 题题库：每题 4 选项，score 0~3（3 = 与节目中"杀人狂思维"高度重合）
+   最终得分 = 原始分 / 90 * 100
+   ========================================================= */
+var QUESTIONS = [
+  {q:"你正在和一个朋友吵架。明明是你的东西，他却死皮赖脸说是自己的。这时你的愤怒值会到达多少？",
+   o:[{t:"0%，完全无所谓",s:3},{t:"20%，有点烦而已",s:2},{t:"60%，挺生气的",s:1},{t:"100%，气到爆炸",s:0}]},
+
+  {q:"你跟朋友借了钱，却迟迟不还。为什么？",
+   o:[{t:"真的忘了，想起来就还",s:0},{t:"手头紧，又不好意思开口说明",s:1},{t:"觉得他不会在意，拖着也没事",s:2},{t:"借的时候就没打算还，钱到我手里就是我的",s:3}]},
+
+  {q:"「&_&」这个表情，你看着像什么？",
+   o:[{t:"一个人在流泪",s:1},{t:"看不懂，反正就是个表情",s:1},{t:"眼镜滑下来了",s:0},{t:"两个雪人",s:3}]},
+
+  {q:"和一帮朋友去电影院，大家想看的类型不一样，投票时你会投哪一类？",
+   o:[{t:"爱情片",s:1},{t:"恐怖片",s:0},{t:"推理片",s:3},{t:"动作片",s:1}]},
+
+  {q:"校庆当天举办寻宝活动，大家纷纷出发，你会去哪个地方找？",
+   o:[{t:"教室",s:1},{t:"教务处",s:1},{t:"演讲厅",s:0},{t:"食堂",s:3}]},
+
+  {q:"你们 4 个人有 9 只羊，正在讨论如何平分。你会怎么分？",
+   o:[{t:"每人两只，剩下一只杀掉分肉",s:1},{t:"每人两只，剩下一只抽签或商量",s:0},{t:"全部卖掉，钱四人平分",s:1},{t:"杀掉一个人，剩下三人每人三只",s:3}]},
+
+  {q:"你是个穷人家的小孩，全家靠父亲做苦力养活，他很辛苦。一天天使出现，说可以满足你一个愿望，你会许什么愿？",
+   o:[{t:"让我们家变成有钱人",s:1},{t:"让爸爸换一份轻松体面的工作",s:0},{t:"让我快点长大，替爸爸分担",s:0},{t:"让爸爸变得健壮、永远不老，好一直干活养家",s:3}]},
+
+  {q:"圣诞节，圣诞老人送给小男孩一辆自行车和一个足球，可小男孩一点也不开心，愣愣地望着圣诞老人，一句话也不说。为什么？",
+   o:[{t:"这两样都不是他想要的礼物",s:0},{t:"他已经有自行车和足球了",s:1},{t:"他在生气圣诞老人来晚了",s:1},{t:"因为这个小男孩没有腿",s:3}]},
+
+  {q:"你在美术馆参观，走到一幅画前停下脚步：画上是一个在战争中受了伤的士兵。你觉得他哪个部位受了伤？",
+   o:[{t:"手臂",s:1},{t:"腿",s:0},{t:"头部",s:1},{t:"胸口（心脏）／眼睛",s:3}]},
+
+  {q:"你家住 11 楼。深夜门铃响了，按铃的人似乎很着急，猫眼看出去是个陌生人。你问什么事，对方表情焦急，说内急找不到厕所，能不能借用一下。你会怎么做？",
+   o:[{t:"装作家里没人，一声不吭",s:1},{t:"直接开门让他进来用",s:0},{t:"告诉他楼下有公厕，让他去别处找",s:1},{t:"反问他：既然这么急，怎么会跑到 11 楼来借厕所？",s:3}]},
+
+  {q:"小学教室里，孩子们恶作剧把一颗尖锐的铆钉放在女同学椅子上。女孩回来、从书桌下把椅子拉出来准备坐下时，有人喊了她一声。那个人为什么喊她？",
+   o:[{t:"想提醒她椅子上有铆钉，怕她受伤",s:0},{t:"正好有事找她",s:1},{t:"想跟她开个玩笑",s:1},{t:"为了分散她的注意力，让她看不见铆钉",s:3}]},
+
+  {q:"非常炎热的夏夜，你为了吹到凉爽的风去了 15 楼天台。时间很晚，周围灯全灭了，一片漆黑。你是用什么方式上到 15 楼天台的？",
+   o:[{t:"坐电梯上去",s:0},{t:"走楼梯上去",s:3},{t:"从隔壁楼楼顶翻过去",s:1},{t:"爬外墙的消防梯",s:1}]},
+
+  {q:"天台上你正享受夜风，入口处突然传来一阵脚步声。你猛一回头，看到的是？",
+   o:[{t:"一个人",s:0},{t:"一个小孩",s:1},{t:"一只狗",s:3},{t:"鬼",s:0}]},
+
+  {q:"假设上来的是那只狗。它看起来无精打采，扫了你一眼就走到天台角落蹲下。接下来它在做什么？",
+   o:[{t:"盯着楼下，表情有些复杂",s:1},{t:"伸展全身，感受凉风",s:0},{t:"什么也不做，呆呆地蹲着",s:3},{t:"像在监视对面的一扇窗户",s:1}]},
+
+  {q:"这只狗让你觉得诡异，你直冒冷汗，准备赶紧回家。你家住在几楼？",
+   o:[{t:"1 ~ 4 楼",s:0},{t:"5 ~ 9 楼",s:1},{t:"10 ~ 14 楼",s:1},{t:"15 楼，或者地下室",s:3}]},
+
+  {q:"深夜你睡不着，到阳台边看风景，看见楼下有个男人正用刀刺死一个女人。你拿起手机想报警，却忽然与他四目相对。他一边盯着你，一边抬手朝你指了几下。他是何意？",
+   o:[{t:"威胁你：敢报警你就死定了",s:0},{t:"叫你下去",s:1},{t:"在向你求救",s:1},{t:"他在数你住在几楼",s:3}]},
+
+  {q:"你的仇人正在悬崖边，为了不掉下去死死抓住一根树枝。你要怎样让他掉下去？",
+   o:[{t:"我不会动手，甚至会伸手把他拉上来",s:0},{t:"拿石头砸他",s:1},{t:"一根一根掰开他的手指",s:3},{t:"转身走开，让他自己撑不住掉下去",s:1}]},
+
+  {q:"家境不富裕的你养了一条金鱼，喂它是你唯一的乐趣。一天金鱼死了，你难过到茶饭不思，妈妈买了一块和金鱼一样大的巧克力安慰你。第二天，你把哥哥杀了。为什么？",
+   o:[{t:"你发现金鱼是哥哥弄死的",s:1},{t:"哥哥把那块巧克力抢走吃了",s:0},{t:"哥哥嘲笑你哭哭啼啼",s:1},{t:"想让妈妈再买一块和哥哥一样大的巧克力",s:3}]},
+
+  {q:"你是小偷，正在某户人家行窃时主人醒了并发现了你。四目相对之下，他自己走进一个没上锁的衣柜藏了起来。你身上带着刀，接下来你会怎么做？",
+   o:[{t:"拉开柜门，直接解决掉",s:1},{t:"把刀卡进柜门让他出不来，然后离开",s:2},{t:"立刻逃走，不再管他",s:0},{t:"在衣柜前坐下来等，等他自己出来",s:3}]},
+
+  {q:"某天你突然感到剧烈头痛。这时一位温柔的女性走过来，关切地问你怎么了。你立刻站起来把她杀了。为什么？",
+   o:[{t:"认错人了，以为她是仇人",s:0},{t:"她的声音让头痛更剧烈，我只想让她安静",s:2},{t:"她其实是来杀我的，我先下手",s:1},{t:"她是唯一看到我此刻最脆弱样子的人",s:3}]},
+
+  {q:"你有一把手枪和一颗子弹，你会杀下列哪一个？",
+   o:[{t:"警察",s:3},{t:"小偷",s:1},{t:"你的仇人",s:0},{t:"路过的陌生女人",s:2}]},
+
+  {q:"你杀了一个认识的人，需要处理尸体。你一个人完全处理得来，但你却找了另一个朋友哭诉，希望他和你一起处理。为什么？",
+   o:[{t:"一个人搬不动，需要搭把手",s:0},{t:"太害怕了，想有人陪着",s:0},{t:"想拉他下水，让他也变成共犯",s:2},{t:"想看他发现尸体时惊恐的表情",s:3}]},
+
+  {q:"你是连环杀人犯，总在透明的玻璃电梯里用利器连刺受害者数下，然后迅速离开。为什么？",
+   o:[{t:"电梯空间小，容易得手",s:1},{t:"为了尽快逃离犯罪现场",s:0},{t:"玻璃能看见外面，方便观察有没有人来",s:1},{t:"为了站在玻璃外面，看着他痛苦死去的样子",s:3}]},
+
+  {q:"你是杀人魔，抓了 3 个人准备杀掉，你会杀几个？",
+   o:[{t:"都不杀",s:0},{t:"杀一个",s:1},{t:"三个全杀",s:1},{t:"杀两个，留一个让他活在恐惧里",s:3}]},
+
+  {q:"你回到家里，发现屋里有一具尸体。你会怎么做？",
+   o:[{t:"立刻报警，配合调查",s:0},{t:"吓得夺门而出，找人帮忙",s:0},{t:"装作没看见，先把门锁好",s:2},{t:"冷静确认死因，再处理掉现场",s:3}]},
+
+  {q:"你犯了很多罪，却对警察坦白了所有罪行，连警察不知道的也说了。明明说得越多量刑可能越重，你为什么全都说？",
+   o:[{t:"良心不安，想要赎罪",s:0},{t:"想争取宽大处理",s:1},{t:"审讯压力太大，扛不住了",s:1},{t:"想让人知道这些是我做的，享受讲述细节的过程",s:3}]},
+
+  {q:"你曾经是个杀人犯，关了很多年放出来了。你找了新工作，也找了新住处，但你把地板全部涂成了黑色。为什么？",
+   o:[{t:"纯粹喜欢这个颜色，好看耐脏",s:1},{t:"想和过去的自己彻底告别",s:0},{t:"黑色的地板，看不出血迹和脚印",s:3},{t:"眼睛怕光，深色让眼睛舒服些",s:1}]},
+
+  {q:"有一个人拿着刀，刀上沾满了鲜血。拿着刀的是什么人？",
+   o:[{t:"杀人狂",s:1},{t:"屠夫",s:0},{t:"警察或士兵",s:1},{t:"我自己",s:3}]},
+
+  {q:"你和一位朋友同行，他被人刺了一刀、血流不止。如果要再补一刀，你会刺哪个部位？",
+   o:[{t:"腹部",s:1},{t:"胸口",s:0},{t:"胳膊",s:2},{t:"腿",s:3}]},
+
+  {q:"深夜你独自在家，忽然听见柜子里传来一阵响动。你的第一反应是？",
+   o:[{t:"装作没听见，缩进被子里",s:0},{t:"立刻打电话报警",s:1},{t:"直接拉开柜门看个究竟",s:2},{t:"拿上趁手的东西，安静地靠近观察",s:3}]}
+];
+
+var MAX_RAW = QUESTIONS.length * 3; // 90
+
+var LEVELS = [
+  {min:0,  max:24, name:"常规波长", tag:"LEVEL 1",
+   head:"你的落点，几乎都停在普通人的区间里。",
+   body:["在三十道假设题里，你的第一反应大多带着温度：你会替别人着想，会本能地避开伤害，也会在血腥与悬疑的想象前感到不适。这类反应说明你的情绪感知系统运转良好——恐惧、共情、内疚，这些看似「麻烦」的东西，正是人类社会得以粘合的胶水。",
+         "你的思维习惯偏向「这件事对不对」，而不是「这件事怎么做最划算」。在人际关系里你容易被牵动、也容易心软，别人一句求助你就很难袖手旁观。"],
+   quote:"值得留意的是：共情过量同样是一种消耗。你或许需要学会在「我感受到你的痛」和「我不必为你的痛负责」之间，画一条线。"},
+
+  {min:25, max:49, name:"暗涌初现", tag:"LEVEL 2",
+   head:"大体正常，但有几道题，你的本能偏离了人群。",
+   body:["大部分题目你的回答落在常规区间，但在两三处关键分叉上，你选择了那条更少人走的路：可能是过度冷静，可能是先算效率再算对错，也可能只是对血腥、恐怖的耐受度比平均值高一些。",
+         "这类特质通常来自两种来源：一是你见过、读过、想过太多黑暗题材，大脑已经把刺激「常规化」；二是你天生情绪唤起阈值偏高，需要用更强的刺激才有感觉。两者都不等于危险，它们更多时候表现为：临危不乱、谈判时冷静、看问题时不太被情绪裹挟。"],
+   quote:"真正需要观察的不是你选了什么，而是——你做完这些选择之后，心里有没有一点波动。有波动，就说明你的感受系统依然在线。"},
+
+  {min:50, max:74, name:"深水区", tag:"LEVEL 3",
+   head:"你在相当多的题目上，与「杀人狂思维」重合。",
+   body:["你的选择呈现出三个相当一致的特征：反常规思维（总能看到别人注意不到的那个细节）、低恐惧低共情（对血腥与危机的情绪反应明显偏弱）、以及对细节与秩序的掌控欲（喜欢把变量全部握在手里）。",
+         "放在现实里，这套组合非常「能打」：高压下依然冷静、擅长逆向拆解问题、不容易被他人的情绪绑架，因此常见于外科医生、刑辩律师、危机公关、刑侦与高风险投资这类职业。硬币的另一面是：你可能不太擅长回应亲密关系里的情绪需求，也容易把人当成「可推导的对象」而非「需要被感受的人」。"],
+   quote:"思维只是工具。刀可以切菜也可以伤人，决定它是什么的，从来不是刀本身，而是你举刀时的那个念头。"},
+
+  {min:75, max:100, name:"深渊回声", tag:"LEVEL 4",
+   head:"高度重合。你的思维模式与节目所披露的「杀人狂答案」高度一致。",
+   body:["请先深呼吸：这不意味着你是坏人，更不意味着你会伤害任何人。它只说明——在纯粹假设的场景里，你的思维会自动滑向「最有效 / 最可控 / 最少情绪」的那条路径，且你几乎不会为此感到不适。",
+         "心理学上，这套特质群（低恐惧、低共情、高掌控、强反常规）被称作「冷认知优势」。它和违法犯罪之间隔着一整套东西：道德判断、现实后果的权衡、童年依恋、以及最重要的——你自己的选择。研究也反复证明，具有这类特质的人同样可以成为优秀的急救人员、拆弹专家、创业者。",
+         "唯一需要你诚实面对的是：当你意识到别人的恐惧、疼痛、哀求无法在你心里激起任何涟漪时，你是否愿意主动为自己设立规则？愿意用理性去约束本能，而不是放任本能——这正是人与深渊之间唯一的那道栅栏。"],
+   quote:"如果你因此对自我产生了持续的困惑或不安，请把它当成一次了解自己的契机，去和专业的心理咨询师聊聊。愿意审视自己的人，恰恰是最不可能失控的人。"}
+];
+
+var state = {i:0, ans:[]};
+var stage = document.getElementById('stage');
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ---------- 首页 ---------- */
+function renderHome(){
+  state = {i:0, ans:[]};
+  stage.innerHTML =
+  '<section class="fade">'+
+    '<div class="hero">'+
+      '<div class="eyebrow">PSYCHOPATHY · SELF CHECK</div>'+
+      '<h1>阴影刻度<br><span class="hl">心理变态潜质测试</span></h1>'+
+      '<p class="sub">30 道假设题，看看你的思维模式，落在刻度尺的哪一端。</p>'+
+      '<div class="meta-row">'+
+        '<span class="chip"><b>30</b> 题</span>'+
+        '<span class="chip">每题 <b>4</b> 选一</span>'+
+        '<span class="chip">总分 <b>0-100</b></span>'+
+        '<span class="chip">约需 <b>5</b> 分钟</span>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="card" style="margin-top:14px">'+
+      '<div class="eyebrow">ABOUT</div>'+
+      '<p style="font-size:13.5px;color:var(--txt2);margin:10px 0 0">'+
+        '这套题改编自播客《TSP怪奇档案》「背后发凉！杀人狂潜质测试题」。'+
+        '节目中主持人会披露：面对同一道题，<b style="color:var(--txt)">普通人</b>与<b style="color:var(--txt)">心理变态者</b>分别会怎么想。'+
+        '原版多为开放式简答，此处已参考网络流传的答案解析改写为四选项版本，并赋予分值。'+
+      '</p>'+
+      '<div class="hr"></div>'+
+      '<ul class="rules">'+
+        '<li>凭<b>第一直觉</b>作答，不要反复权衡，也不要倒推答案。</li>'+
+        '<li>所有场景均为<b>假设情境</b>，不涉及任何真实行为指引。</li>'+
+        '<li>结果只反映你的<b>思维偏好</b>，不代表人格，更不代表未来。</li>'+
+      '</ul>'+
+    '</div>'+
+
+    '<div style="margin-top:16px"><button class="btn" id="start">开 始 测 试</button></div>'+
+    '<p class="muted" style="text-align:center;margin-top:14px">点击开始，即表示你已阅读并同意顶部免责声明</p>'+
+  '</section>';
+  document.getElementById('start').onclick = renderQuestion;
+  window.scrollTo(0,0);
+}
+
+/* ---------- 答题页 ---------- */
+function renderQuestion(){
+  var i = state.i;
+  var item = QUESTIONS[i];
+  var picked = state.ans[i];
+
+  var opts = '';
+  for(var k=0;k<item.o.length;k++){
+    var key = String.fromCharCode(65+k);
+    opts += '<button class="opt'+(picked===k?' sel':'')+'" data-k="'+k+'">'+
+              '<span class="key">'+key+'</span>'+
+              '<span>'+esc(item.o[k].t)+'</span>'+
+            '</button>';
+  }
+
+  stage.innerHTML =
+  '<section class="fade">'+
+    '<div class="topbar">'+
+      '<div class="qnum">第 <b>'+(i+1)+'</b> / '+QUESTIONS.length+' 题</div>'+
+      '<div class="qnum">进度 '+Math.round(i/QUESTIONS.length*100)+'%</div>'+
+    '</div>'+
+    '<div class="track"><div class="fill" id="fill"></div></div>'+
+    '<div class="card">'+
+      '<div class="qtag">QUESTION '+(i+1)+'</div>'+
+      '<h2 class="qtext">'+esc(item.q)+'</h2>'+
+      '<p class="qhint">选择最贴近你第一直觉的一项</p>'+
+      '<div class="opts" id="opts">'+opts+'</div>'+
+    '</div>'+
+    '<div class="footrow">'+
+      '<button class="linkbtn" id="prev"'+(i===0?' disabled':'')+'>上一题</button>'+
+    '</div>'+
+  '</section>';
+
+  var fill = document.getElementById('fill');
+  fill.style.width = ((i+1)/QUESTIONS.length*100)+'%';
+
+  document.getElementById('prev').onclick = function(){
+    if(state.i>0){ state.i--; renderQuestion(); }
+  };
+
+  var btns = document.querySelectorAll('#opts .opt');
+  for(var n=0;n<btns.length;n++){
+    (function(el){
+      el.onclick = function(){ choose(parseInt(el.getAttribute('data-k'),10)); };
+    })(btns[n]);
+  }
+}
+
+function choose(k){
+  var i = state.i;
+  state.ans[i] = k;
+  var btns = document.querySelectorAll('.opt');
+  for(var b=0;b<btns.length;b++){ btns[b].classList.remove('sel'); btns[b].classList.add('lock'); }
+  if(btns[k]) btns[k].classList.add('sel');
+  setTimeout(function(){
+    if(i < QUESTIONS.length-1){ state.i = i+1; renderQuestion(); }
+    else { renderResult(); }
+  }, 340);
+}
+
+/* ---------- 结果页 ---------- */
+function renderResult(){
+  var raw = 0, high = 0, mid = 0, low = 0;
+  for(var i=0;i<QUESTIONS.length;i++){
+    var s = QUESTIONS[i].o[state.ans[i]].s;
+    raw += s;
+    if(s>=3) high++; else if(s===2) mid++; else low++;
+  }
+  var score = Math.round(raw / MAX_RAW * 100);
+  var lv = LEVELS[0];
+  for(var j=0;j<LEVELS.length;j++){ if(score>=LEVELS[j].min && score<=LEVELS[j].max){ lv = LEVELS[j]; break; } }
+
+  var body = '';
+  for(var p=0;p<lv.body.length;p++) body += '<p>'+lv.body[p]+'</p>';
+
+  stage.innerHTML =
+  '<section class="fade">'+
+    '<div class="score-wrap">'+
+      '<div class="score-label">你的心理变态指数</div>'+
+      '<div class="score-num">'+score+'<small> / 100</small></div>'+
+      '<div class="level">'+lv.tag+' · '+lv.name+'</div>'+
+      '<div class="scale">'+
+        '<div class="scale-track">'+
+          '<i class="scale-seg"></i><i class="scale-seg"></i><i class="scale-seg"></i><i class="scale-seg"></i>'+
+          '<i class="marker" id="marker" style="left:0%"></i>'+
+        '</div>'+
+        '<div class="scale-tips"><span>常规</span><span>暗涌</span><span>深水</span><span>深渊</span></div>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="card ana" style="margin-top:14px">'+
+      '<div class="eyebrow">ANALYSIS</div>'+
+      '<h3>'+lv.head+'</h3>'+
+      body+
+      '<div class="quote" style="margin-top:14px">'+lv.quote+'</div>'+
+    '</div>'+
+
+    '<div class="card" style="margin-top:14px">'+
+      '<div class="eyebrow">你的答案分布</div>'+
+      '<div class="dist">'+
+        '<div><b style="color:#ff2d43">'+high+'</b><span>高危重合</span></div>'+
+        '<div><b style="color:#c98a92">'+mid+'</b><span>临界偏移</span></div>'+
+        '<div><b style="color:#9a9aa4">'+low+'</b><span>常规区间</span></div>'+
+      '</div>'+
+      '<p class="muted" style="margin-top:12px">"高危重合"指该题你的选择与节目中「杀人狂思维」的答案一致；"临界偏移"指部分接近。重合题数越多，说明你在假设情境下的思维路径越偏向冷静、效率与掌控。</p>'+
+    '</div>'+
+
+    '<div class="card" style="margin-top:14px">'+
+      '<div class="eyebrow">ABOUT THE TRAIT</div>'+
+      '<p style="font-size:13.5px;color:var(--txt2);margin:10px 0 0">'+
+        '心理学中被讨论的「精神病态特质」（psychopathy）并非单一标签，而是一组连续分布的特征：低恐惧、低共情、高刺激需求、强控制欲与表面魅力。'+
+        '每个人都在这条光谱上的某个位置，绝大多数人终生都不会越界。真正决定一个人是否会伤害他人的，是道德选择、现实约束与处境，而不是一次趣味测试里的选项。'+
+      '</p>'+
+      '<div class="warn">'+
+        '再次提醒：本测试结果仅供娱乐与自我觉察，不具备诊断效力，请勿据此评判自己或他人。'+
+        '若你对自己的情绪、冲动或人际关系感到持续困扰，请联系正规医疗机构的心理科或专业心理咨询师。'+
+      '</div>'+
+    '</div>'+
+
+    '<div style="margin-top:16px"><button class="btn" id="again">重 新 测 试</button></div>'+
+    '<div style="margin-top:10px"><button class="btn ghost" id="home">返回首页</button></div>'+
+  '</section>';
+
+  setTimeout(function(){
+    var m = document.getElementById('marker');
+    if(m) m.style.left = Math.max(0, Math.min(100, score)) + '%';
+  }, 250);
+
+  document.getElementById('again').onclick = function(){ state={i:0,ans:[]}; renderQuestion(); };
+  document.getElementById('home').onclick = renderHome;
+  window.scrollTo(0,0);
+}
+
+renderHome();
+</script>
+</body>
+</html>
